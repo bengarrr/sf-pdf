@@ -1,7 +1,6 @@
 import { PrismaClient } from "../../prisma-document-database/prisma-document-client-types";
-import { withAccelerate } from "@prisma/extension-accelerate"
 
-const getPrisma = () => new PrismaClient().$extends(withAccelerate());
+const getPrisma = () => new PrismaClient()
 
 const globalForDocumentDBPrismaClient = global as unknown as {
   documentDBPrismaClient: ReturnType<typeof getPrisma>;

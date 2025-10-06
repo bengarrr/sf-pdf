@@ -6,22 +6,38 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "npx prisma generate --schema ./prisma-user-database/schema.prisma --no-engine && npx prisma generate --schema ./prisma-document-database/schema.prisma --no-engine",
+    "generate": "npx prisma generate --schema ./prisma-user-database/schema.prisma --no-engine && npx prisma generate --schema ./prisma-document-database/schema.prisma --no-engine",
+    "migrate": "npx prisma migrate dev --schema ./prisma-user-database/schema.prisma",
+    "deploy": "npx prisma migrate deploy --schema ./prisma-user-database/schema.prisma && npx prisma migrate deploy --schema ./prisma-document-database/schema.prisma",
+    "studio": "npx prisma studio --schema ./prisma-user-database/schema.prisma --port 5555 & npx prisma studio --schema ./prisma-document-database/schema.prisma --port 5556"
   },
   "dependencies": {
+    "@prisma/client": "^6.16.3",
+    "@prisma/extension-accelerate": "^2.0.2",
+    "next": "15.5.4",
     "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "next": "15.5.4"
+    "react-dom": "19.1.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@ai-sdk/openai": "^2.0.42",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "ai": "^5.0.60",
+    "bcryptjs": "^3.0.2",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
-    "@eslint/eslintrc": "^3"
+    "iron-session": "^8.0.4",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^6.16.3",
+    "swr": "^2.3.6",
+    "tailwindcss": "^4",
+    "tsx": "^4.20.6",
+    "typescript": "^5",
+    "zod": "^4.1.11"
   }
 }

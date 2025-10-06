@@ -10,6 +10,12 @@
 !.yarn/releases
 !.yarn/versions
 
+*.zip
+
+/prisma-user-database/prisma-user-client-types
+/prisma-user-database/migrations
+/prisma-document-database/prisma-document-client-types
+
 # testing
 /coverage
 
@@ -39,3 +45,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/app/generated/prisma
+
+/src/generated/prisma
+
+/prisma/.../app/generated/prisma

@@ -12,17 +12,17 @@ export default function Page({ params }) {
     const chatId = useSearchParams().get("chatId");
 
     return (
-        <Suspense>
-            <ProtectedRoute>
-                <div className="flex flex-row">
-                    <div className="w-full lg:w-1/2">
-                        <PDFViewer></PDFViewer>
-                    </div>
-                    <div className="w-full lg:w-1/2">
-                        <Chatbox currentUserId={session?.user.id} chatId={chatId}></Chatbox>
-                    </div>
+        <ProtectedRoute>
+            <div className="flex flex-row">
+                <div className="w-full lg:w-1/2">
+                    <PDFViewer></PDFViewer>
                 </div>
-            </ProtectedRoute>
-        </Suspense>
+                <div className="w-full lg:w-1/2">
+                    <Suspense>
+                        <Chatbox currentUserId={session?.user.id} chatId={chatId}></Chatbox>
+                    </Suspense>
+                </div>
+            </div>
+        </ProtectedRoute>
     )
 }

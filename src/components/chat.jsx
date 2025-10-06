@@ -180,7 +180,7 @@ export default function Chatbox({currentUserId }) {
         prev.map(msg => msg.id === tempId ? realMessage : msg)
       );
       
-      await sendToAi(realMessage.text);
+      //await sendToAi(realMessage.text);
     } catch (error) {
       console.error('Error sending message:', error);
       

@@ -3,12 +3,13 @@
 import { useState, useRef, useEffect } from 'react';
 import { generateText } from "ai"
 import { createOpenAI } from "@ai-sdk/openai"
+import { useSearchParams } from 'next/navigation';
 
 const openai = createOpenAI({
   apiKey: process.env.OPENAI_API_KEY, // Replace with your actual API key
 });
 
-export default function Chatbox({ chatId, currentUserId }) {
+export default function Chatbox({currentUserId }) {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(true);
@@ -18,6 +19,8 @@ export default function Chatbox({ chatId, currentUserId }) {
   const messagesEndRef = useRef(null);
   const textareaRef = useRef(null);
   const recognitionRef = useRef(null);
+
+  const chatId = useSearchParams().get("chatId");
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });

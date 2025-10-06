@@ -4,13 +4,11 @@ import Chatbox from "@/components/chat";
 import PDFViewer from "@/components/viewer";
 import ProtectedRoute from "@/components/protected";
 import { getSession } from "@/lib/auth/session";
-import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
 export default function Page({ params }) {
     const session = getSession();
-    const chatId = useSearchParams().get("chatId");
-
+    
     return (
         <ProtectedRoute>
             <div className="flex flex-row">
@@ -19,7 +17,7 @@ export default function Page({ params }) {
                 </div>
                 <div className="w-full lg:w-1/2">
                     <Suspense>
-                        <Chatbox currentUserId={session?.user.id} chatId={chatId}></Chatbox>
+                        <Chatbox currentUserId={session?.user.id}></Chatbox>
                     </Suspense>
                 </div>
             </div>
